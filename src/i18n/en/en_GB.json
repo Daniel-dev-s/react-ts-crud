@@ -1,0 +1,20 @@
+{
+    "project": {
+        "labels": {
+            "page": "Projects",
+            "title": "Title",
+            "description": "Description",
+            "create_project": "Create Project",
+            "edit_project": "Edit Project"
+        }
+    },
+    "create": "Create",
+    "save": "Save",
+    "add_new": "Add new",
+    "validation": {
+        "required": {
+            "title": "Fill the title!",
+            "description": "Fill the description!"
+        }
+    }
+}

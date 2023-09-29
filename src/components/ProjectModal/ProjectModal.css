@@ -56,3 +56,9 @@
 .modal-container > form > h3 {
     margin: 0 0 20px;
 }
+
+.modal-container > form small {
+    display: block;
+    color: red;
+    margin-bottom: 1em;
+}

@@ -1,20 +1,17 @@
 import { actions } from './modal.actions';
+import Project from '../../types/Project';
 
 export enum ModalsKeys {
   CREATE_MODAL = 'create_modal', EDIT_MODAL = 'edit_modal'
 }
 
 export interface ModalState {
-  key: ModalsKeys,
+  project?: Project,
   visible: boolean
 }
 
-export interface ModalsState {
-  modals: ModalState[]
-}
-
 export interface ModalVisibilityPayload {
-  key: ModalsKeys,
+  project?: Project,
   visible: boolean
 }
 

@@ -20,10 +20,6 @@ export interface SaveProjectPayload {
   project: Project
 }
 
-export interface SetEditingProjectPayload {
-  project: Project
-}
-
 export type PropertiesTypes<T> = T extends { [key: string]: infer U }
   ? U
   : never;

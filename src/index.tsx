@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './assets/css/index.css';
 
-import ProjectPage from './pages/ProjectPage';
+import './i18n/config';
+
+import ProjectPage from './pages/ProjectPage/ProjectPage';
 
 import { Provider } from 'react-redux';
 import store from './store';

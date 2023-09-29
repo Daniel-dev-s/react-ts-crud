@@ -3,10 +3,10 @@ import { createSelector } from 'reselect';
 import { AppState } from '../root.reducer';
 import { ModalState } from './modal.types';
 
-const getModalsState = (state: AppState): ModalState[] => state.modal.modals;
+const getModalState = (state: AppState): ModalState => state.modal;
 
 export const getModalsStateSelector = createSelector(
-  getModalsState,
+  getModalState,
   (visible) => visible,
 );
 

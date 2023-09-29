@@ -1,6 +1,6 @@
 import { produce } from 'immer';
 
-import { ADD_PROJECT, REMOVE_PROJECT, SAVE_PROJECT, SET_EDITING_PROJECT } from './project.action-types';
+import { ADD_PROJECT, REMOVE_PROJECT, SAVE_PROJECT } from './project.action-types';
 import { ActionsTypes, PROJECTS_STORAGE_KEY, ProjectsState } from './project.types';
 
 import Project from '../../types/Project';
@@ -45,12 +45,6 @@ export default (state = initialState, action: ActionsTypes): ProjectsState => {
         });
 
         localStorage.setItem(PROJECTS_STORAGE_KEY, JSON.stringify(draft.projects));
-      });
-    }
-
-    case SET_EDITING_PROJECT: {
-      return produce(state, (draft) => {
-        draft.editingProject = action.payload.project;
       });
     }
 

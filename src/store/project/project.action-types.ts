@@ -1,4 +1,3 @@
 export const ADD_PROJECT = 'ADD_PROJECT';
 export const REMOVE_PROJECT = 'REMOVE_PROJECT';
 export const SAVE_PROJECT = 'SAVE_PROJECT';
-export const SET_EDITING_PROJECT = 'SET_EDITING_PROJECT';

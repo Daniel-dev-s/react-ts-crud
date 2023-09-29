@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../../assets/css/components/ProjectCard.css';
+import './ProjectCard.css';
 import trashIcon from '../../assets/img/trashIcon.svg';
 import editIcon from '../../assets/img/editIcon.svg';
 
@@ -19,12 +19,8 @@ const ProjectCard: React.FC<ProjectCardProps> = (props) => {
     const dispatch = useDispatch();
 
     const editProjectClick = (): void => {
-        dispatch(ProjectActions.setEditingProject({
-            project: props.project
-        }));
-
         dispatch(ModalActions.setModalVisibility({
-            key: ModalsKeys.EDIT_MODAL,
+            project: props.project,
             visible: true
         }));
     }
