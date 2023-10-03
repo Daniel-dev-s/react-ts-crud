@@ -1,4 +1,3 @@
-import './ProjectModal.css';
 import crossIcon from '../../assets/img/crossIcon.svg';
 
 import React from 'react';
@@ -18,17 +17,13 @@ import { actions as ProjectActions } from '../../store/project';
 
 import ProjectInput from '../../types/ProjectInput';
 
+import { StyledForm, StyledModalWrapper, StyledCloseModalButton, StyledCreateButton, FormTitle, FormError, TextInput, FormLabel } from './ProjectModal.styles';
+
 const AddProjectModal: React.FC = () => {
     const dispatch = useDispatch();
     const modalState = useSelector(getModalsStateSelector);
 
-    let containerClasses = ['modal-container'];
-
     const { t } = useTranslation();
-
-    if (modalState.visible) {
-        containerClasses.push('visible');
-    }
 
     const closeButtonClick = (): void => {
         dispatch(ModalActions.setModalVisibility({
@@ -46,6 +41,7 @@ const AddProjectModal: React.FC = () => {
                 project: { id: Date.now(), ...project }
             }));
         }
+        console.log('?');
         closeButtonClick();
     }
 
@@ -78,7 +74,7 @@ const AddProjectModal: React.FC = () => {
                 return errors;
             });
 
-    return <div className={containerClasses.join(' ')}>
+    return <StyledModalWrapper $visible={modalState.visible}>
         <Form
             onSubmit={onFormSubmit}
             validate={validate}
@@ -90,17 +86,17 @@ const AddProjectModal: React.FC = () => {
                 submitting,
                 invalid,
             }) => (
-                <form onSubmit={handleSubmit}>
-                    <h3>{header}</h3>
-                    <button className='close-modal' onClick={closeButtonClick} type='button'>
+                <StyledForm onSubmit={handleSubmit}>
+                    <FormTitle>{header}</FormTitle>
+                    <StyledCloseModalButton onClick={closeButtonClick} type='button'>
                         <img src={crossIcon} alt='close' />
-                    </button>
+                    </StyledCloseModalButton>
                     <Field name="title">
                         {({ input }) => (
                             <div>
-                                <label>{t('project.labels.title')}</label>
-                                <input type="text" {...input} />
-                                <small>{errors?.title}</small>
+                                <FormLabel>{t('project.labels.title')}</FormLabel>
+                                <TextInput {...input} />
+                                <FormError>{errors?.title}</FormError>
                             </div>
                         )}
                     </Field>
@@ -108,20 +104,20 @@ const AddProjectModal: React.FC = () => {
                     <Field name="description">
                         {({ input }) => (
                             <div>
-                                <label>{t('project.labels.description')}</label>
-                                <input type="text" {...input} />
-                                <small>{errors?.description}</small>
+                                <FormLabel>{t('project.labels.description')}</FormLabel>
+                                <TextInput {...input} />
+                                <FormError>{errors?.description}</FormError>
                             </div>
                         )}
                     </Field>
 
-                    <button type="submit" className="create-button" disabled={submitting || invalid}>
+                    <StyledCreateButton type="submit" disabled={submitting || invalid}>
                         {saveButtonLabel}
-                    </button>
-                </form>
+                    </StyledCreateButton>
+                </StyledForm>
             )}
         </Form>
-    </div>
+    </StyledModalWrapper>
 }
 
 export default AddProjectModal;

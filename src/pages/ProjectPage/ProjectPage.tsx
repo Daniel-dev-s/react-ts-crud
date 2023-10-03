@@ -1,4 +1,3 @@
-import './ProjectPage.css';
 import ProjectCard from '../../components/ProjectCard/ProjectCard';
 
 import ProjectModal from '../../components/ProjectModal/ProjectModal';
@@ -8,10 +7,12 @@ import Project from '../../types/Project';
 
 import { useTranslation } from 'react-i18next';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { actions as ModalActions } from '../../store/modal';
 import { getProjectsSelector } from '../../store/project';
-import { useSelector } from 'react-redux';
+
+import { StyledHeader, StyledProjectsWrapper, Title, StyledCreateProjectButton, PageWrapper } from './ProjectPage.styles';
 
 const ProjectPage: React.FC = () => {
   const dispatch = useDispatch();
@@ -26,12 +27,12 @@ const ProjectPage: React.FC = () => {
 
   return (
     <>
-      <div className="page">
-        <div className="header">
-          <h1>{t('project.labels.page')}</h1>
-          <button onClick={openCreateModal} className="create-project-button">{t('add_new')}</button>
-        </div>
-        <div className="projects-container">
+      <PageWrapper>
+        <StyledHeader>
+          <Title>{t('project.labels.page')}</Title>
+          <StyledCreateProjectButton onClick={openCreateModal}>{t('add_new')}</StyledCreateProjectButton>
+        </StyledHeader>
+        <StyledProjectsWrapper>
           {
             projects.map((project: Project, index: number): React.ReactElement =>
               <ProjectCard
@@ -40,8 +41,8 @@ const ProjectPage: React.FC = () => {
               />
             )
           }
-        </div>
-      </div>
+        </StyledProjectsWrapper>
+      </PageWrapper>
       <ProjectModal />
     </>
   );
